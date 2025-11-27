@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FlowerLens – Upload Image</title>
+
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-panel: #020b25;
+      --card: #020818;
+      --gradient-start: #22c55e;
+      --gradient-end: #0ea5e9;
+      --primary: #0ea5e9;
+      --accent: #22c55e;
+      --text-main: #e5f3ff;
+      --text-muted: #9ca3af;
+      --border-soft: #1e293b;
+      --radius-lg: 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #1d3b5a 0, #020617 55%, #000 95%);
+      color: var(--text-main);
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #22c55e22, #020617 60%);
+      padding: 26px;
+      border-radius: 26px;
+      border: 1px solid #1f2937;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border-radius: 22px;
+      padding: 28px 32px 32px;
+      border: 1px solid #1f2937;
+    }
+
+    /* header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: conic-gradient(from 160deg, #22c55e, #0ea5e9, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #020617;
+      font-size: 18px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* title */
+    .title-block {
+      margin-bottom: 26px;
+    }
+
+    .title-block h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .title-block p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* upload card */
+    .upload-card {
+      background: radial-gradient(circle at top, #0b1220, #020617 65%);
+      border-radius: var(--radius-lg);
+      padding: 34px 30px 38px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.7);
+      text-align: center;
+    }
+
+    .upload-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      color: #020617;
+      margin: 0 auto 18px;
+      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
+    }
+
+    .upload-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #e5f3ff;
+    }
+
+    .upload-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 12px 26px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 0.18s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #22c55e, #0ea5e9);
+      color: #020617;
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.45);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(34, 197, 94, 0.6);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e5f3ff;
+      border: 1px solid #1e293b;
+    }
+    .btn-outline:hover {
+      background: #020b25;
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      .shell { padding: 18px; }
+      .panel { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="panel">
+
+    <!-- header -->
+    <div class="header">
+      <div class="brand">
+        <div class="brand-logo">F</div>
+        <div class="brand-text">
+          <div class="brand-name">FlowerLens</div>
+          <div class="brand-tagline">Transparent KNN flower classifier</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- title -->
+    <div class="title-block">
+      <h1>Insert new flower image</h1>
+      <p>
+        Upload a new flower image to see how the K-Nearest Neighbours algorithm
+        places it within the trained dataset and predicts its class.
+      </p>
+    </div>
+
+    <!-- upload area -->
+    <div class="upload-card">
+      <div class="upload-icon">⬆</div>
+      <div class="upload-title">Upload your image</div>
+      <div class="upload-text">
+        Choose a JPG or PNG image of a flower. The system will compare your image
+        with the existing training samples and calculate the nearest neighbours.
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary">Choose file</button>
+        <a href="dataset.html" class="btn btn-outline">Back to dataset</a>
+      </div>
+
+      <div class="hint">
+        Supported formats: JPG, PNG • Maximum size: 5MB
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
